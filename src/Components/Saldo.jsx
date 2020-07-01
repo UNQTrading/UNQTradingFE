@@ -4,15 +4,15 @@ import Typography from '@material-ui/core/Typography';
 
 export default function Saldo(props){
     const [saldo, setSaldo] = useState()
-    const usuario = props.usuario;
-    const isUser = props.isUser
+    const usuarioId = !!props.usuario ? props.usuario.id : null
+    const isUser = props.isUser;
 
     useEffect(() => {
-            RestService.GET.getSaldo(usuario.id, isUser)
+            RestService.GET.getSaldo(usuarioId, isUser)
                 .then(response => {
                     setSaldo(response.data)
                 })
-        }, [isUser, usuario.id]
+        }, [isUser, usuarioId]
     )
 
     return(
